@@ -62,21 +62,20 @@
                     break;
             }
 
-            string result = GetResult(player1Choice, player2Choice).ToString();
+            int result = GetResult(player1Choice, player2Choice);
 
             Console.WriteLine($"Player 1 chose {(PlayerChoice)player1Choice} and Player 2 chose {(PlayerChoice)player2Choice}"); 
 
-            Console.WriteLine(result);
             
-            /*ConsoleIO.PrintResult(result);*/
+            ConsoleIO.PrintResult(result);
             
 
         }
-        public GameResult GetResult(int playerOneChoice, int playerTwoChoice)
+        public int GetResult(int playerOneChoice, int playerTwoChoice)
         {
             if (playerOneChoice == playerTwoChoice)
             {
-                return GameResult.TIE;
+                return 1;
             }
 
             // player one win conditions
@@ -84,10 +83,10 @@
                 (playerOneChoice == (int)PlayerChoice.PAPER && playerTwoChoice == (int)PlayerChoice.ROCK ||
                 (playerOneChoice == (int)PlayerChoice.SCISSORS && playerTwoChoice == (int)PlayerChoice.PAPER)))
             {
-                return GameResult.PLAYER1WIN;
+                return 2;
             }
 
-            return GameResult.PLAYER2WIN;
+            return 3;
         }
         public enum PlayerChoice
         {
